@@ -1,42 +1,55 @@
-const Promise = require('bluebird')
 const path = require('path')
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  return new Promise((resolve, reject) => {
-    const photographPost = path.resolve('./src/templates/photograph-post.js')
-    resolve(
-      graphql(
-        `
-          {
-            allContentfulPhotographPost {
-              edges {
-                node {
-                  title
-                  slug
-                }
-              }
-            }
+  const result = await graphql(`
+    {
+      allContentfulPhotoCategory {
+        edges {
+          node {
+            title
+            slug
           }
-        `
-      ).then((result) => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
         }
+      }
+      allContentfulPhotographPost {
+        edges {
+          node {
+            title
+            slug
+          }
+        }
+      }
+    }
+  `)
 
-        const posts = result.data.allContentfulPhotographPost.edges
-        posts.forEach((post, index) => {
-          createPage({
-            path: `/photograph/${post.node.slug}/`,
-            component: photographPost,
-            context: {
-              slug: post.node.slug,
-            },
-          })
-        })
-      })
-    )
+  if (result.errors) {
+    return
+  }
+
+  const photoCategory = path.resolve('./src/pages/photo-category.js')
+  const photographPost = path.resolve('./src/templates/photograph-post.js')
+
+  const photos = result.data.allContentfulPhotographPost.edges
+  photos.forEach((photo, index) => {
+    createPage({
+      path: `/photograph/${photo.node.slug}/`,
+      component: photographPost,
+      context: {
+        slug: photo.node.slug,
+      },
+    })
+  })
+
+  const categories = result.data.allContentfulPhotoCategory.edges
+  categories.forEach((cat, index) => {
+    createPage({
+      path: `/category/${cat.node.slug}/`,
+      component: photoCategory,
+      context: {
+        slug: cat.node.slug,
+      },
+    })
   })
 }

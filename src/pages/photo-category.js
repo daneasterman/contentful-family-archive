@@ -36,20 +36,24 @@ class RootIndex extends React.Component {
 export default RootIndex
 
 export const pageQuery = graphql`
-  query PhotoCategoryQuery {
+  query PhotoCategoryQuery($slug: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    allContentfulPhotographPost(sort: { fields: [publishDate], order: DESC }) {
+
+    allContentfulPhotographPost(
+      filter: { photo_category: { elemMatch: { slug: { eq: $slug } } } }
+    ) {
       edges {
         node {
           title
           slug
           image {
-            fluid(maxWidth: 350, resizingBehavior: SCALE)
-            ...GatsbyImageSharpFluid_noBase64
+            fluid(maxWidth: 350, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid_tracedSVG
+            }
           }
         }
       }

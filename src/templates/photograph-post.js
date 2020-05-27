@@ -10,6 +10,10 @@ import heroStyles from '../components/hero.module.css'
 class PhotographPostTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.contentfulPhotographPost')
+    const imageCaption = get(
+      this.props,
+      'data.contentfulPhotographPost.imageCaption'
+    )
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
 
     return (
@@ -23,10 +27,13 @@ class PhotographPostTemplate extends React.Component {
               fluid={post.image.fluid}
             />
           </div>
-          <div className="wrapper">
-            <h1 className="section-headline">{post.title}</h1>
-            <p>{post.imageCaption.imageCaption}</p>
-          </div>
+
+          {imageCaption ? (
+            <div className="wrapper">
+              <h1 className="section-headline">{post.title}</h1>
+              <p>{imageCaption.imageCaption}</p>
+            </div>
+          ) : null}
         </div>
       </Layout>
     )
