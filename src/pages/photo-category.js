@@ -21,7 +21,7 @@ class RootIndex extends React.Component {
               {photos.map(({ node }) => {
                 return (
                   <li key={node.slug}>
-                    <PhotoPreview photo={node} />
+                    <PhotoPreview item={node} />
                   </li>
                 )
               })}

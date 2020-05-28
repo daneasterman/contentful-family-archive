@@ -13,7 +13,7 @@ export default ({ item }) => (
         fluid={item.image.fluid}
       />
       <h3 className={styles.previewTitle}>
-        <Link to={`/photograph/${item.slug}`}>{item.title}</Link>
+        <Link to={`/category/${item.slug}`}>{item.title}</Link>
       </h3>
     </div>
   </>
