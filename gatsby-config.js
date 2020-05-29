@@ -46,9 +46,11 @@ module.exports = {
         mergeScriptHashes: false,
         mergeStyleHashes: false,
         directives: {
-          'script-src': "'self' family-photoblog.netlify.app/",
+          'script-src': "'unsafe-inline' family-photoblog.netlify.app/",
+          'script-src': "'unsafe-inline' https://*.disqus.com",
+
           'default-src': "'self' https://*.disqus.com",
-          'default-src': "'self' https://disqus.com",
+
           'script-src': "'self' https://*.disqus.com",
           'img-src': "'self' data: https://*.disqus.com",
           'frame-src': "'self' https://disqus.com",
