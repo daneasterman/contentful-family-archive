@@ -41,12 +41,17 @@ module.exports = {
       resolve: `gatsby-plugin-csp`,
       options: {
         disableOnDev: true,
-        reportOnly: false, // For csp testing purposes
+        reportOnly: false,
         mergeDefaultDirectives: true,
-        mergeScriptHashes: false, // you can disable scripts sha256 hashes
-        mergeStyleHashes: false, // you can disable styles sha256 hashes
+        mergeScriptHashes: false,
+        mergeStyleHashes: false,
         directives: {
+          'script-src': "'self' family-photoblog.netlify.app/",
+          'default-src': "'self' https://*.disqus.com",
+          'default-src': "'self' https://disqus.com",
           'script-src': "'self' https://*.disqus.com",
+          'img-src': "'self' data: https://*.disqus.com",
+          'frame-src': "'self' https://disqus.com",
           'style-src': "'self' 'unsafe-inline'",
           'img-src': "'self' data: https://images.ctfassets.net/",
         },
