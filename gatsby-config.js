@@ -43,6 +43,8 @@ module.exports = {
         disableOnDev: true,
         reportOnly: false, // For csp testing purposes
         mergeDefaultDirectives: true,
+        mergeScriptHashes: true, // you can disable scripts sha256 hashes
+        mergeStyleHashes: true, // you can disable styles sha256 hashes
         directives: {
           'script-src': "'self' https://disqus.com",
           'style-src': "'self' 'unsafe-inline'",
