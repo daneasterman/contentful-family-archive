@@ -46,16 +46,16 @@ module.exports = {
         mergeScriptHashes: false,
         mergeStyleHashes: false,
         directives: {
-          'script-src': "'unsafe-inline' family-photoblog.netlify.app/",
-          'script-src': "'unsafe-inline' https://*.disqus.com",
+          // 'script-src': `'self' 'unsafe-inline' data: www.google-analytics.com`,
+          // 'style-src': `'self' 'unsafe-inline' fonts.googleapis.com fonts.gstatic.com`,
+          // 'img-src': `'self' data: www.google-analytics.com`,
 
+          'script-src': `'self' 'unsafe-inline' family-photoblog.netlify.app/ https://*.disqus.com https://disqus.com`,
           'default-src': "'self' https://*.disqus.com",
-
-          'script-src': "'self' https://*.disqus.com",
-          'img-src': "'self' data: https://*.disqus.com",
           'frame-src': "'self' https://disqus.com",
-          'style-src': "'self' 'unsafe-inline'",
-          'img-src': "'self' data: https://images.ctfassets.net/",
+
+          'img-src':
+            "'self' data: https://images.ctfassets.net/  https://*.disqus.com https://disqus.com",
         },
       },
     },
