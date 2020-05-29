@@ -51,12 +51,12 @@ module.exports = {
           // 'img-src': `'self' data: www.google-analytics.com`,
 
           'script-src': `'self' 'unsafe-inline' family-photoblog.netlify.app/ https://*.disqus.com https://disqus.com`,
-          'default-src': "'self' c.disquscdn.com",
+          'default-src': "'self' https://*.disquscdn.com https://disqus.com",
           'frame-src': "'self' https://disqus.com",
           'style-src': "'self' 'unsafe-inline'",
 
           'img-src':
-            "'self' data: https://images.ctfassets.net/  https://c.disquscdn.com https://disqus.com",
+            "'self' data: https://images.ctfassets.net/  https://*.disquscdn.com https://disqus.com https://*.disqus.com",
         },
       },
     },
