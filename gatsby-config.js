@@ -37,5 +37,13 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
+    {
+      resolve: `gatsby-plugin-csp`,
+      options: {
+        directives: {
+          'frame-ancestors': 'https://*.disqus.com',
+        },
+      },
+    },
   ],
 }
