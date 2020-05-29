@@ -40,8 +40,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-csp`,
       options: {
+        disableOnDev: true,
+        reportOnly: false, // For csp testing purposes
+        mergeDefaultDirectives: true,
         directives: {
-          'frame-ancestors': 'https://*.disqus.com',
+          'script-src': "'self' https://disqus.com",
+          'style-src': "'self' 'unsafe-inline'",
+          'img-src': "'self' data: https://images.ctfassets.net/",
         },
       },
     },
