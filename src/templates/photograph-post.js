@@ -64,7 +64,7 @@ export const pageQuery = graphql`
       slug
       image {
         fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid
         }
       }
       imageCaption {

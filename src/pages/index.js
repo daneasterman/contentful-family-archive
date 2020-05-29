@@ -48,7 +48,7 @@ export const pageQuery = graphql`
           dateAdded
           image {
             fluid(maxWidth: 350, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid
             }
           }
         }
