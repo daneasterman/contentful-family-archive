@@ -40,7 +40,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulPhotoCategory {
+    allContentfulPhotoCategory(sort: { fields: [dateAdded], order: DESC }) {
       edges {
         node {
           title
