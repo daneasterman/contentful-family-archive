@@ -13,6 +13,7 @@ class PhotographPostTemplate extends React.Component {
     const post = get(this.props, 'data.contentfulPhotographPost')
     const title = get(this.props, 'data.contentfulPhotographPost.title')
     const slug = get(this.props, 'data.contentfulPhotographPost.slug')
+
     const imageCaption = get(
       this.props,
       'data.contentfulPhotographPost.imageCaption'
