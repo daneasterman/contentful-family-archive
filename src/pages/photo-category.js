@@ -11,9 +11,6 @@ class RootIndex extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const photos = get(this, 'props.data.allContentfulPhotographPost.edges')
 
-    const pageContext = get(this.props, 'pageContext')
-    // console.log('***pageContext', pageContext)
-
     return (
       <Layout location={this.props.location}>
         <div style={{ background: '#fff' }}>

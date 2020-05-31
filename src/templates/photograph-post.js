@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
-import { DiscussionEmbed } from 'disqus-react'
 
 import heroStyles from '../components/hero.module.css'
 
@@ -44,7 +43,6 @@ class PhotographPostTemplate extends React.Component {
             </div>
           ) : null}
         </div>
-        <DiscussionEmbed {...disqusConfig} />
       </Layout>
     )
   }
