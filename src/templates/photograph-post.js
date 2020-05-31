@@ -4,25 +4,21 @@ import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
-
 import heroStyles from '../components/hero.module.css'
+import Disqus from 'gatsby-plugin-disqus'
 
 class PhotographPostTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.contentfulPhotographPost')
-    const title = get(this.props, 'data.contentfulPhotographPost.title')
-    const slug = get(this.props, 'data.contentfulPhotographPost.slug')
+
+    // const title = get(this.props, 'data.contentfulPhotographPost.title')
+    // const slug = get(this.props, 'data.contentfulPhotographPost.slug')
 
     const imageCaption = get(
       this.props,
       'data.contentfulPhotographPost.imageCaption'
     )
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-
-    const disqusConfig = {
-      shortname: process.env.GATSBY_DISQUS_NAME,
-      config: { identifier: slug, title },
-    }
 
     return (
       <Layout location={this.props.location}>
@@ -43,6 +39,7 @@ class PhotographPostTemplate extends React.Component {
             </div>
           ) : null}
         </div>
+        <Disqus identifier={post.slug} title={post.title} />
       </Layout>
     )
   }
